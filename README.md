@@ -3,7 +3,7 @@ Orvelo API Library for PHP
 
 Description
 -------------------------------------
-<p>The Orvelo PHP APi for use with an Orvelo account.</p>
+<p>The Orvelo PHP API for use with an Orvelo account.</p>
 <p>Use this class to submit your forms to Orvelo</p>
 <p>Obtaine your unique channel hash from the Settings->profile->Edit Channel section of Orvelo</p>
 
