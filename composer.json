@@ -1,0 +1,17 @@
+{
+  "name": "orvelo/php-orvelo-api",
+  "version": "1.0",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Tom Jolly",
+      "email": "tom.jolly@orvelo.com"
+    },
+    {
+      "name": "Andrew Baillie",
+      "email": "andrew@orvelo.com"
+    }
+  ]
+}
