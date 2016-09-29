@@ -23,7 +23,7 @@ Description
     }
   
 ####Git:
-    git clone https://github.com/Orvelo/PHP-ORVELO-API
+    git clone https://github.com/Orvelo/PHP-ORVELO-API.git
     
 <p>In the controller or on the page that handles your form submission </p>
     
