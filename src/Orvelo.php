@@ -220,11 +220,15 @@
          * @since 1.0
          *
          * @param string $channelHash
+         *
+         * @return $this
          */
         public function setChannelHash($channelHash)
         {
             $this->channelHash = $channelHash;
             $this->addField('channel_hash', $channelHash);
+
+            return $this;
         }
 
 
