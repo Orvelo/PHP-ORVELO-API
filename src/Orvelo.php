@@ -1,4 +1,5 @@
 <?php
+
     /**
      * Class Orvelo
      */
@@ -17,10 +18,10 @@
          *
          * @param string|null $channelHash
          */
-        public function __construct($channelHash  = null)
+        public function __construct($channelHash = NULL)
         {
             $this->channelHash = $channelHash;
-            $this->fields      = array();
+            $this->fields      = [];
         }
 
         /**
@@ -54,7 +55,9 @@
             $fields = $this->getFields();
             $this->setChannelHash($this->channelHash);
             if (!empty($fields)) {
-                $this->setFormName($this->formName);
+                if (!empty($this->formName)) {
+                    $this->setFormName($this->formName);
+                }
                 if (isset($_COOKIE['_oal'])) {
                     $this->setVid($_COOKIE['_oal']);
                 } else {
@@ -215,6 +218,7 @@
 
         /**
          * @since 1.0
+         *
          * @param string $channelHash
          */
         public function setChannelHash($channelHash)
