@@ -32,7 +32,7 @@ Basic Example
 <p>This will submit all the $_REQUEST parameters to Orvelo</p>
 <p>If you opt to use this method each form will need a hidden field with a unique form identifier, named OrveloName or FormName</p>
 
-<p><strong>WARNING: Do not use this method on forms that handle sensative information such as credit card details or account passwords.</strong></p>
+<p><strong>WARNING: Do not use this method on forms that handle sensitive information such as credit card details or account passwords.</strong></p>
 
     $orvelo = new Orvelo('<your unique hash>');
     orvelo->send();
