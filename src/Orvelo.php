@@ -21,7 +21,7 @@ class Orvelo
     public function __construct($channelHash = NULL)
     {
         $this->channelHash = $channelHash;
-        $this->fields = [];
+        $this->fields = array();
     }
 
     /**
