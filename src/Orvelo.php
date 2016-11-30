@@ -48,12 +48,12 @@ class Orvelo
      */
     public function send($fromRequest = true)
     {
-
         if ($fromRequest) {
             $this->buildFromRequest();
         }
         $fields = $this->getFields();
         $this->setChannelHash($this->channelHash);
+
         if (!empty($fields)) {
             if (!empty($this->formName)) {
                 $this->setFormName($this->formName);
@@ -64,20 +64,33 @@ class Orvelo
                 $this->setVid("NA");
             }
 
-            $fields_string = "";
-            foreach ($this->getFields() as $key => $value) {
-                $fields_string .= $key . '=' . $value . '&';
-            }
-            rtrim($fields_string, '&');
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->getOrveloURL());
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_VERBOSE, 0);
-            curl_setopt($ch, CURLOPT_POST, count($fields));
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-            $result = curl_exec($ch);
-            curl_close($ch);
 
+            if(is_callable('curl_init')){
+                $fields_string = "";
+                foreach ($this->getFields() as $key => $value) {
+                    $fields_string .= $key . '=' . $value . '&';
+                }
+
+                rtrim($fields_string, '&');
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $this->getOrveloURL());
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_VERBOSE, 0);
+                curl_setopt($ch, CURLOPT_POST, count($fields));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                $result = curl_exec($ch);
+                curl_close($ch);
+            } else {
+                $params = array(
+                    'http' => array(
+                    'method' => 'POST',
+                    'content' => http_build_query($this->getFields())
+                    )
+                );
+                $ctx = stream_context_create($params);
+                $result = @fopen($this->getOrveloURL(), 'rb', false, $ctx);
+            }
             return $result;
         }
 
