@@ -1,7 +1,6 @@
 {
   "name": "orvelo/php-orvelo-api",
   "description": "The Orvelo PHP API",
-  "version": "1.0.0-stable",
   "license": "proprietary",
   "authors": [
     {
