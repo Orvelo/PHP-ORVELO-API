@@ -5,8 +5,9 @@
  */
 class Orvelo
 {
-    private $orveloURL = "https://postman.orvelo.com/parser/curl_response";
+    private $orveloURL = "https://post.orvelo.com/gateway/";
     private $vid;
+    private $oas;
     private $channelHash;
     private $formName;
     private $fields;
@@ -58,12 +59,17 @@ class Orvelo
             if (!empty($this->formName)) {
                 $this->setFormName($this->formName);
             }
-            if (isset($_COOKIE['_oal'])) {
-                $this->setVid($_COOKIE['_oal']);
+            if (isset($_COOKIE['_oav'])) {
+                $this->setVid($_COOKIE['_oav']);
             } else {
                 $this->setVid("NA");
             }
 
+            if (isset($_COOKIE['_oas'])) {
+                $this->setOas($_COOKIE['oas']);
+            } else {
+                $this->setOas(NULL);
+            }
 
             if(is_callable('curl_init')){
                 $fields_string = "";
@@ -221,6 +227,25 @@ class Orvelo
     }
 
     /**
+     * @return mixed
+     */
+    public function getOas()
+    {
+        return $this->oas;
+    }
+
+    /**
+     * @param mixed $oas
+     * @return Orvelo
+     */
+    public function setOas($oas)
+    {
+        $this->oas = $oas;
+        $this->addField('oas', $this->getOas());
+        return $this;
+    }
+
+    /**
      * @since 1.0
      * @return string
      */
@@ -256,6 +281,7 @@ class Orvelo
         <ul>
             <li><strong>URL:</strong> {$this->getOrveloURL()}</li>
             <li><strong>VID:</strong> {$this->getVid()}</li>
+            <li><strong>OAS:</strong> {$this->getOas()}</li>
             <li><strong>HASH:</strong> {$this->getChannelHash()}</li>
             <li><strong>FORM NAME:</strong> {$this->getFormName()}</li>
             <li><strong>FIELDS:</strong>
