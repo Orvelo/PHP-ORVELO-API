@@ -66,7 +66,7 @@ class Orvelo
             }
 
             if (isset($_COOKIE['_oas'])) {
-                $this->setOas($_COOKIE['oas']);
+                $this->setOas($_COOKIE['_oas']);
             } else {
                 $this->setOas(NULL);
             }
